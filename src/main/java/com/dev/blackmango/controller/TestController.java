@@ -21,18 +21,49 @@ public class TestController {
 
     @GetMapping("/")
     public ResultVO getTest(HttpServletRequest request, HttpServletResponse response) {
-        log.info("path :: /");
-        log.info("request :: {}", request);
-        log.info("response :: {}", response);
         return new ResultVO(1, "", testService.getListUsers());
     }
 
-    @PostMapping("/user")
+    @PostMapping("/users")
     public ResultVO postTest(@RequestBody @Valid SignUpUser signUpUser,
                              HttpServletRequest request, HttpServletResponse response) {
-        log.info("path :: /user");
-        log.info("request :: {}", request);
-        log.info("response :: {}", response);
         return new ResultVO(1, "", testService.postUsers(signUpUser));
+    }
+
+    @GetMapping("/users/id")
+    public ResultVO postTestId(@RequestParam String id,
+                               HttpServletRequest request, HttpServletResponse response) {
+        return new ResultVO(1, "", testService.getUsersById(id));
+    }
+
+    @GetMapping("/users/name")
+    public ResultVO postTestName(@RequestParam String name,
+                                 HttpServletRequest request, HttpServletResponse response) {
+        return new ResultVO(1, "", testService.getUsersByName(name));
+    }
+
+    @GetMapping("/users/name/list")
+    public ResultVO postTestNameList(@RequestParam String name,
+                                 HttpServletRequest request, HttpServletResponse response) {
+        return new ResultVO(1, "", testService.getUsersByNameLike(name));
+    }
+
+    @GetMapping("/users/params")
+    public ResultVO postTestParams(@RequestParam String id, @RequestParam String name,
+                                   HttpServletRequest request, HttpServletResponse response) {
+        return new ResultVO(1, "", testService.getUsersByIdAndName(id, name));
+    }
+
+    @GetMapping("/users/page")
+    public ResultVO postTestPage(@RequestParam int page, @RequestParam int limit,
+                                 HttpServletRequest request, HttpServletResponse response) {
+        return new ResultVO(1, "", testService.getUsersPage(page, limit));
+    }
+
+    @GetMapping("/users/page/params")
+    public ResultVO postTestPageParams(@RequestParam int page, @RequestParam int limit,
+                                 @RequestParam String id, @RequestParam String name,
+                                 HttpServletRequest request, HttpServletResponse response) {
+        return new ResultVO(1, "", testService.getUsersPageByIdAndName(page, limit, id, name));
     }
 }

@@ -16,10 +16,13 @@ public class Users {
     private String id;
     @Column(length = 256, nullable = false)
     private String password;
+    @Column(length = 50)
+    private String name;
 
     @Builder
-    public Users(String id, String password) {
+    public Users(String id, String password, String name) {
         this.id = id;
         this.password = password;
+        this.name = name;
     }
 }
