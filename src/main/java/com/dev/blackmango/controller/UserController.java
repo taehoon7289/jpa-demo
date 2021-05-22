@@ -20,7 +20,7 @@ public class UserController {
   private UserService userService;
 
   @GetMapping("/")
-  public ResultVO getUsers(HttpServletRequest request, HttpServletResponse response) {
+  public ResultVO getListUser(HttpServletRequest request, HttpServletResponse response) {
     return new ResultVO(1, "", userService.getListUsers());
   }
 
@@ -37,13 +37,13 @@ public class UserController {
   }
 
   @GetMapping("/name")
-  public ResultVO postUserByName(@RequestParam String name,
+  public ResultVO getListUserByName(@RequestParam String name,
       HttpServletRequest request, HttpServletResponse response) {
     return new ResultVO(1, "", userService.getUsersByName(name));
   }
 
   @GetMapping("/name/list")
-  public ResultVO getTestNameList(@RequestParam String name,
+  public ResultVO getListUserByNameLike(@RequestParam String name,
       HttpServletRequest request, HttpServletResponse response) {
     return new ResultVO(1, "", userService.getUsersByNameLike(name));
   }
