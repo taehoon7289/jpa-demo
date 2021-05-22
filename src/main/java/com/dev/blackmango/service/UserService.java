@@ -1,7 +1,7 @@
 package com.dev.blackmango.service;
 
-import com.dev.blackmango.dto.signup.SignUpUser;
-import com.dev.blackmango.entity.Users;
+import com.dev.blackmango.dto.signup.SignUpForm;
+import com.dev.blackmango.entity.User;
 import com.dev.blackmango.repository.UsersRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -15,49 +15,48 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class TestService {
+public class UserService {
 
     private UsersRepository usersRepository;
 
-    public List<Users> getListUsers() {
+    public List<User> getListUsers() {
         return usersRepository.findAll();
     }
 
-    public Users postUsers(SignUpUser signUpUser) {
-        Users users = Users.builder()
-                .id(signUpUser.getId())
-                .password(signUpUser.getPassword())
-                .name(signUpUser.getName())
-                .build();
-        return usersRepository.save(users);
+    public User postUsers(SignUpForm signUpForm) {
+        User user = new User();
+        user.setId(signUpForm.getId());
+        user.setPassword(signUpForm.getPassword());
+        user.setName(signUpForm.getName());
+        return usersRepository.save(user);
     }
 
-    public Users getUsersById(String id) {
-        Optional<Users> user = usersRepository.findById(id);
+    public User getUsersById(String id) {
+        Optional<User> user = usersRepository.findById(id);
         return user.orElseGet(() -> null);
     }
 
-    public Users getUsersByName(String name) {
-        Optional<Users> user = usersRepository.findByName(name);
+    public User getUsersByName(String name) {
+        Optional<User> user = usersRepository.findByName(name);
         return user.orElseGet(() -> null);
     }
 
-    public List<Users> getUsersByNameLike(String name) {
+    public List<User> getUsersByNameLike(String name) {
         return usersRepository.findByNameLike(name);
     }
 
-    public Users getUsersByIdAndName(String id, String name) {
-        Optional<Users> user = usersRepository.findByIdAndName(id, name);
+    public User getUsersByIdAndName(String id, String name) {
+        Optional<User> user = usersRepository.findByIdAndName(id, name);
         return user.orElseGet(() -> null);
     }
 
-    public Page<Users> getUsersPage(int page, int limit) {
+    public Page<User> getUsersPage(int page, int limit) {
         // paging 처리, sort 관련 방법
         Pageable pageable = PageRequest.of(page, limit, Sort.by("id").descending().and(Sort.by("userNo").ascending()));
         return usersRepository.findAll(pageable);
     }
 
-    public Page<Users> getUsersPageByIdAndName(int page, int limit, String id, String name) {
+    public Page<User> getUsersPageByIdAndName(int page, int limit, String id, String name) {
         Pageable pageable = PageRequest.of(page, limit);
         return usersRepository.findPageByIdAndName(id, name, pageable);
     }

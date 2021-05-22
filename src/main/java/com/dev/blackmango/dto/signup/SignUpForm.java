@@ -7,7 +7,7 @@ import javax.validation.constraints.NotEmpty;
 
 
 @Getter @Setter
-public class SignUpUser {
+public class SignUpForm {
     @NotEmpty
     private String id;
     @NotEmpty

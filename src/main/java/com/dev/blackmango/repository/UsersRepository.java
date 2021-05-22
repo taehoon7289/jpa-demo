@@ -1,6 +1,6 @@
 package com.dev.blackmango.repository;
 
-import com.dev.blackmango.entity.Users;
+import com.dev.blackmango.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,11 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface UsersRepository extends JpaRepository<Users, Long> {
-    Optional<Users> findById(String id);
-    Optional<Users> findByName(String name);
-    List<Users> findByNameLike(String name);
-    Optional<Users> findByIdAndName(String id, String name);
+public interface UsersRepository extends JpaRepository<User, Long> {
+    Optional<User> findById(String id);
+    Optional<User> findByName(String name);
+    List<User> findByNameLike(String name);
+    Optional<User> findByIdAndName(String id, String name);
 
-    Page<Users> findPageByIdAndName(String id, String name, Pageable pageable);
+    Page<User> findPageByIdAndName(String id, String name, Pageable pageable);
 }
