@@ -1,5 +1,6 @@
 package com.dev.blackmango.controller.api;
 
+import com.dev.blackmango.common.exception.ServiceException;
 import com.dev.blackmango.common.model.ResponseData;
 import com.dev.blackmango.model.dto.SignInDTO;
 import com.dev.blackmango.model.dto.SignUpDTO;
@@ -25,13 +26,13 @@ public class SignApiController {
 
   @PostMapping("/in")
   public ResponseData postUserSignIn(@RequestBody @Valid SignInDTO signInDTO,
-      HttpServletRequest request, HttpServletResponse response) {
+      HttpServletRequest request, HttpServletResponse response) throws ServiceException {
     return new ResponseData(1, "", userService.signIn(signInDTO, request, response));
   }
 
   @PostMapping("/up")
   public ResponseData postUserSignUp(@RequestBody @Valid SignUpDTO signUpDTO,
-      HttpServletRequest request, HttpServletResponse response) {
+      HttpServletRequest request, HttpServletResponse response) throws ServiceException {
     return new ResponseData(1, "", userService.signUp(signUpDTO, request, response));
   }
 
