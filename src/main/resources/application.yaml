@@ -1,6 +1,9 @@
 spring:
   profiles:
     active: local
+  jwt:
+    secret-key: '!mangomango@'
+    valid-millisecond: 1000 * 30 * 60
 
 springdoc:
   api-docs:

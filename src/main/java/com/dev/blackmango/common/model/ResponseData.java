@@ -1,4 +1,4 @@
-package com.dev.blackmango.common.vo;
+package com.dev.blackmango.common.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,8 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ResultVO {
-    int code;
-    String message;
-    Object data;
+public class ResponseData<T> {
+
+  int code;
+  String message;
+  T data;
 }
