@@ -1,6 +1,8 @@
 package com.dev.blackmango.service;
 
 import com.dev.blackmango.common.component.JwtTokenProvider;
+import com.dev.blackmango.common.exception.ServiceException;
+import com.dev.blackmango.common.exception.code.UserExCode;
 import com.dev.blackmango.model.dto.JWTDataDTO;
 import com.dev.blackmango.model.dto.SignInDTO;
 import com.dev.blackmango.model.dto.SignUpDTO;
@@ -70,16 +72,16 @@ public class UserService {
 
   @Transactional
   public Map<String, Object> signIn(SignInDTO signInDTO, HttpServletRequest request,
-      HttpServletResponse response) {
+      HttpServletResponse response) throws ServiceException {
     String id = signInDTO.getId();
     String password = signInDTO.getPassword();
     User user = userRepository.findById(id).orElseGet(() -> null);
     if (user == null) {
       // exception
-      throw new RuntimeException("아이디없음!!!!!!!!!!!");
+      throw new ServiceException(UserExCode.INVALID_ID);
     }
     if (!passwordEncoder.matches(password, user.getPassword())) {
-      throw new RuntimeException("패스워드 다름!!!!!!!!!!!");
+      throw new ServiceException(UserExCode.INVALID_PASSWORD);
     }
     // token 발급
     JWTDataDTO jwtDataDTO = JWTDataDTO.builder()
@@ -95,7 +97,7 @@ public class UserService {
 
   @Transactional
   public Map<String, Object> signUp(SignUpDTO signUpDTO, HttpServletRequest request,
-      HttpServletResponse response) {
+      HttpServletResponse response) throws ServiceException {
     User user = User.builder()
         .id(signUpDTO.getId())
         .password(passwordEncoder.encode(signUpDTO.getPassword()))

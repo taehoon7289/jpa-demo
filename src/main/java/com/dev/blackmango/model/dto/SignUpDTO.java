@@ -12,6 +12,6 @@ public class SignUpDTO {
     private String id;
     @NotEmpty
     private String password;
-
+    @NotEmpty
     private String name;
 }
