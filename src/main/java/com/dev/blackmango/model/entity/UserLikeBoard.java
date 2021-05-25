@@ -28,7 +28,7 @@ public class UserLikeBoard {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column
   private long no; // user_like_board PK
-  @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
+  @Column
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
   private LocalDateTime regDate = LocalDateTime.now();
 

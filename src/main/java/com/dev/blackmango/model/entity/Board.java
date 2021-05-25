@@ -2,6 +2,7 @@ package com.dev.blackmango.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +35,7 @@ public class Board {
   @Column(length = 256, nullable = false)
   private String contents; // 내용
 
-  @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
+  @Column
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS") // ISO-8601 formatting
   private LocalDateTime regDate = LocalDateTime.now(); // "작성일"
 

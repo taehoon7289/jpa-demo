@@ -9,6 +9,7 @@ import com.dev.blackmango.model.dto.SignUpDTO;
 import com.dev.blackmango.model.entity.User;
 import com.dev.blackmango.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -102,6 +103,7 @@ public class UserService {
         .id(signUpDTO.getId())
         .password(passwordEncoder.encode(signUpDTO.getPassword()))
         .name(signUpDTO.getName())
+        .regDate(LocalDateTime.now())
         .build();
     User rUser = userRepository.save(user);
     // token 발급

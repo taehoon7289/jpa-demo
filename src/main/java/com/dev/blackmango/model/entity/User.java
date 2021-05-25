@@ -2,6 +2,7 @@ package com.dev.blackmango.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,7 +34,7 @@ public class User {
   private String password; // 비밀번호
   @Column(length = 50)
   private String name; // 이름
-  @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
+  @Column
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
   private LocalDateTime regDate = LocalDateTime.now(); // 가입일
 
