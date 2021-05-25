@@ -76,11 +76,8 @@ public class UserService {
       HttpServletResponse response) throws ServiceException {
     String id = signInDTO.getId();
     String password = signInDTO.getPassword();
-    User user = userRepository.findById(id).orElseGet(() -> null);
-    if (user == null) {
-      // exception
-      throw new ServiceException(UserExCode.INVALID_ID);
-    }
+    User user = userRepository.findById(id)
+        .orElseThrow(() -> new ServiceException(UserExCode.INVALID_ID));
     if (!passwordEncoder.matches(password, user.getPassword())) {
       throw new ServiceException(UserExCode.INVALID_PASSWORD);
     }
