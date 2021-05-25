@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @AllArgsConstructor
-@RequestMapping(value = "/boards")
+@RequestMapping(value = "/api/v1/boards")
 public class BoardApiController {
 
   private BoardService boardService;

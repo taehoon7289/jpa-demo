@@ -8,7 +8,11 @@ import com.dev.blackmango.model.dto.SignInDTO;
 import com.dev.blackmango.model.dto.SignUpDTO;
 import com.dev.blackmango.model.entity.User;
 import com.dev.blackmango.repository.UserRepository;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationConfig;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +20,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,12 +33,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserService {
 
-  private UserRepository userRepository;
-  private JwtTokenProvider jwtTokenProvider;
-  private PasswordEncoder passwordEncoder;
+  private final UserRepository userRepository;
+  private final JwtTokenProvider jwtTokenProvider;
+  private final PasswordEncoder passwordEncoder;
 
   public List<User> getListUsers() {
     return userRepository.findAll();
@@ -90,13 +94,12 @@ public class UserService {
     response.setHeader(HttpHeaders.AUTHORIZATION, this.getAccessToken(jwtDataDTO));
     Map<String, Object> resultMap = new HashMap<>();
     resultMap.put("user", user);
-    resultMap.put("board", user.getBoards());
     return resultMap;
   }
 
   @Transactional
   public Map<String, Object> signUp(SignUpDTO signUpDTO, HttpServletRequest request,
-      HttpServletResponse response) throws ServiceException {
+      HttpServletResponse response) {
     User user = User.builder()
         .id(signUpDTO.getId())
         .password(passwordEncoder.encode(signUpDTO.getPassword()))

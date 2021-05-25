@@ -1,12 +1,12 @@
 package com.dev.blackmango.service;
 
 import com.dev.blackmango.repository.UserRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class BoardService {
 
-  private UserRepository usersRepository;
+  private final UserRepository usersRepository;
 }

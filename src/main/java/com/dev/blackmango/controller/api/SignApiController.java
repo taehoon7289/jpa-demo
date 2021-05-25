@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @AllArgsConstructor
-@RequestMapping(value = "/sign")
+@RequestMapping(value = "/api/v1/sign")
 public class SignApiController {
 
   private UserService userService;

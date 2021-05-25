@@ -3,20 +3,21 @@ package com.dev.blackmango.model.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Getter
@@ -40,9 +41,7 @@ public class User {
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
   private LocalDateTime regDate = LocalDateTime.now(); // 가입일
 
-  @OneToMany(mappedBy = "user")
-  private List<Board> boards;
+  @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+  private Set<Board> boards = new HashSet<>();
 
-  @OneToMany(mappedBy = "user")
-  private List<UserLikeBoard> likes;
 }
