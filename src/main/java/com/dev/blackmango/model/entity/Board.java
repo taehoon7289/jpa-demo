@@ -26,7 +26,7 @@ public class Board {
   private long boardNo; // board PK
   @Column(length = 50, nullable = false)
   private String title; // 제목
-  @Column(length = 256, nullable = false)
+  @Column(columnDefinition = "text", nullable = false)
   private String contents; // 내용
 
   @Column
