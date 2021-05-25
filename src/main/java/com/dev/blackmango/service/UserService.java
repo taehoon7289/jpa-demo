@@ -93,6 +93,7 @@ public class UserService {
     response.setHeader(HttpHeaders.AUTHORIZATION, this.getAccessToken(jwtDataDTO));
     Map<String, Object> resultMap = new HashMap<>();
     resultMap.put("user", user);
+    resultMap.put("board", user.getBoards());
     return resultMap;
   }
 

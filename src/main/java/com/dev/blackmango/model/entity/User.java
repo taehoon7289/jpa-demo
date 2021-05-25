@@ -1,6 +1,7 @@
 package com.dev.blackmango.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ public class User {
   @Column(length = 50, nullable = false)
   private String id; // 아이디
   @Column(length = 256, nullable = false)
+  @JsonIgnore
   private String password; // 비밀번호
   @Column(length = 50)
   private String name; // 이름
