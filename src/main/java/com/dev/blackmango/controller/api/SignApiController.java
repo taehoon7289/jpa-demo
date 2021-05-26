@@ -2,8 +2,8 @@ package com.dev.blackmango.controller.api;
 
 import com.dev.blackmango.common.exception.ServiceException;
 import com.dev.blackmango.common.model.ResponseData;
-import com.dev.blackmango.model.dto.SignInDTO;
-import com.dev.blackmango.model.dto.SignUpDTO;
+import com.dev.blackmango.model.dto.user.SignInDTO;
+import com.dev.blackmango.model.dto.user.SignUpDTO;
 import com.dev.blackmango.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,7 +37,7 @@ public class SignApiController {
   }
 
   @GetMapping("/out")
-  public ResponseData getIntSignOut(HttpServletRequest request, HttpServletResponse response) {
+  public ResponseData getLongSignOut(HttpServletRequest request, HttpServletResponse response) {
     return new ResponseData(1, "", null);
   }
 

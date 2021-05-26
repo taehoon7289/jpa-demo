@@ -6,7 +6,8 @@ import lombok.Getter;
 public enum UserExCode implements BaseExCode {
 
   INVALID_ID(-1001, "아이디 없음!!!!!!"),
-  INVALID_PASSWORD(-1002, "비밀번호 없음!!!!!!");
+  INVALID_PASSWORD(-1002, "비밀번호 없음!!!!!!"),
+  NO_DATA(-1003, "정보 없음!!!!!!");
 
   Integer code;
   String msg;

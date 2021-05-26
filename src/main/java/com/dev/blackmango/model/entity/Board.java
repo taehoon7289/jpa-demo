@@ -11,11 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Board {
@@ -32,6 +36,9 @@ public class Board {
   @Column
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS") // ISO-8601 formatting
   private LocalDateTime regDate = LocalDateTime.now(); // "작성일"
+  @Column
+  @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS") // ISO-8601 formatting
+  private LocalDateTime uptDate = LocalDateTime.now(); // "수정일"
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "user_no", nullable = false)

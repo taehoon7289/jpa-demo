@@ -1,4 +1,4 @@
-package com.dev.blackmango.model.dto;
+package com.dev.blackmango.model.dto.user;
 
 import lombok.Builder;
 import lombok.Getter;
