@@ -42,7 +42,7 @@ public class User {
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
   private LocalDateTime regDate = LocalDateTime.now(); // 가입일
 
-  @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   private Set<Board> boards = new HashSet<>();
 
 }

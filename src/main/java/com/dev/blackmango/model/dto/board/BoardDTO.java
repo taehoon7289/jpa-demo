@@ -10,7 +10,6 @@ import lombok.Setter;
 @Setter
 public class BoardDTO {
 
-  @NotNull
   private Integer boardNo;
   @NotEmpty
   private String title;

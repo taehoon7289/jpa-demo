@@ -9,7 +9,11 @@ import com.dev.blackmango.model.entity.User;
 import com.dev.blackmango.repository.BoardRepository;
 import com.dev.blackmango.repository.UserRepository;
 import java.time.LocalDateTime;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
@@ -18,6 +22,8 @@ import org.springframework.util.ObjectUtils;
 @RequiredArgsConstructor
 public class BoardService {
 
+  @PersistenceContext
+  private final EntityManager entityManager;
   private final UserRepository userRepository;
   private final BoardRepository boardRepository;
 
@@ -45,4 +51,13 @@ public class BoardService {
     board.setUptDate(LocalDateTime.now());
     return board.getBoardNo();
   }
+
+  public Board getBoard(String title) {
+    TypedQuery query = entityManager
+        .createQuery("select b from Board b where b.title = :title", Board.class)
+        .setParameter("title", title);
+    Board board = (Board) query.getSingleResult();
+    return board;
+  }
+
 }

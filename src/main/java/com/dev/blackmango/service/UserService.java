@@ -89,7 +89,7 @@ public class UserService {
         .build();
     response.setHeader(HttpHeaders.AUTHORIZATION, this.getAccessToken(jwtDataDTO));
     Map<String, Object> resultMap = new HashMap<>();
-    resultMap.put("user", user);
+    resultMap.put("data", jwtDataDTO);
     return resultMap;
   }
 
@@ -111,7 +111,7 @@ public class UserService {
         .build();
     response.setHeader(HttpHeaders.AUTHORIZATION, this.getAccessToken(jwtDataDTO));
     Map<String, Object> resultMap = new HashMap<>();
-    resultMap.put("user", rUser);
+    resultMap.put("data", jwtDataDTO);
     return resultMap;
   }
 

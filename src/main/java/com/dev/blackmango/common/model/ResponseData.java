@@ -11,7 +11,7 @@ public class ResponseData<T> {
 
   int code;
   String message;
-  T data;
+  T responseData;
 
   public ResponseData(int code, String message) {
     this.code = code;

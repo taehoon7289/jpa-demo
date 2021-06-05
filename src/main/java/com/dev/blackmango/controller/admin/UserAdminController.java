@@ -21,7 +21,7 @@ public class UserAdminController {
   private UserService userService;
 
   @GetMapping("/")
-  public ResponseData getListUser(HttpServletRequest request, HttpServletResponse response) {
+  public ResponseData getList(HttpServletRequest request, HttpServletResponse response) {
     return new ResponseData(1, "", userService.getListUsers());
   }
 
@@ -32,7 +32,7 @@ public class UserAdminController {
   }
 
   @GetMapping("/name/{name}")
-  public ResponseData getListUserByNameLike(@PathVariable String name,
+  public ResponseData getListByNameLike(@PathVariable String name,
       HttpServletRequest request, HttpServletResponse response) {
     return new ResponseData(1, "", userService.getUsersByNameLike(name));
   }

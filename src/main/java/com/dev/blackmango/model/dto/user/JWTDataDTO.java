@@ -9,7 +9,7 @@ import lombok.Setter;
 @Builder
 public class JWTDataDTO {
 
-  long userNo;
+  Long userNo;
   String id;
   String name;
 }
