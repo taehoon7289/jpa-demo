@@ -1,0 +1,7 @@
+= index
+
+== get index
+
+include::{snippets}/board-insert/curl-request.adoc[]
+include::{snippets}/board-insert/http-request.adoc[]
+include::{snippets}/board-insert/http-response.adoc[]

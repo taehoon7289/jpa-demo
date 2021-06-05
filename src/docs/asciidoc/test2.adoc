@@ -1,0 +1,9 @@
+= index2
+
+== 테스트
+index2
+ㄹㄴ어ㅏ론ㅇ러ㅗㅇ너ㅏ로
+
+include::{snippets}/board-insert/curl-request.adoc[]
+include::{snippets}/board-insert/http-request.adoc[]
+include::{snippets}/board-insert/http-response.adoc[]

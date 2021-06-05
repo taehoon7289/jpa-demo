@@ -27,7 +27,7 @@ public class BoardApiController {
   private BoardService boardService;
   private JwtTokenProvider jwtTokenProvider;
 
-  @PostMapping("/")
+  @PostMapping("")
   public ResponseData postLongSaveBoard(
       @RequestHeader(value = "Authorization") String token,
       @RequestBody @Valid BoardDTO boardDTO) throws ServiceException {
@@ -37,7 +37,7 @@ public class BoardApiController {
             .saveBoard(Long.parseLong(tokenMap.getOrDefault("userNo", -1).toString()), boardDTO));
   }
 
-  @GetMapping("/")
+  @GetMapping("")
   public ResponseData getBoard(
       @RequestHeader(value = "Authorization") String token,
       @RequestParam String title) throws ServiceException {
