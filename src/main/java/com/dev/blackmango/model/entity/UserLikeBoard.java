@@ -1,6 +1,7 @@
 package com.dev.blackmango.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.Column;
@@ -35,9 +36,11 @@ public class UserLikeBoard {
 
   @ManyToOne
   @JoinColumn(name = "user_no")
+  @JsonIgnore
   private User user;
 
   @ManyToOne
   @JoinColumn(name = "board_no")
+  @JsonIgnore
   private Board board;
 }

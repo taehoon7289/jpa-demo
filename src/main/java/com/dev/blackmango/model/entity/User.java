@@ -43,6 +43,7 @@ public class User {
   private LocalDateTime regDate = LocalDateTime.now(); // 가입일
 
   @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JsonIgnore
   private Set<Board> boards = new HashSet<>();
 
 }

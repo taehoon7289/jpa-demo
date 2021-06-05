@@ -1,6 +1,7 @@
 package com.dev.blackmango.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,6 +43,7 @@ public class Board {
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "user_no", nullable = false)
+  @JsonIgnore
   private User user;
 
 }
